@@ -1,0 +1,83 @@
+<% if (!loggedUser) { %>
+    <%- include('../logowanie.ejs') %>
+<% } else { %>    
+        <script type="application/javascript" src="/js/validationWypozyczenieForm.js"></script>
+
+<%- include('../fragments/header.ejs') %>
+        <main>
+            <h2><%= pageTitle %></h2>
+            
+            <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+                <label for="klient"><%= __('Wypozyczenie.fields.klient') %>: <span class="symbol-required">*</span></label>
+                <select name="klient" id="klient" class="<%= (formMode == 'showDetails') ? 'label-inactive' : validationErrors.find(e => e.path.includes('klient_Id')) ? 'error-input' : 'label-active' %>" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+                    <option value="" selected>-- Wybierz klienta --</option>
+                    <% for (let i=0; i<allKlients.length; i++) { let kk = allKlients[i]; %>
+                        <option value="<%= kk._id %>" label="<%= kk.imie + ' ' + kk.nazwisko%>" 
+                        <%= (sel && kk._id.toString() == wypozyczenie.klient_Id.toString()) ? 'selected' : ''%>><%= kk.imie + ' ' + kk.nazwisko %></option>
+                    <% } %>
+                </select>
+                <span id="errorKlient" class="errors-text">
+                    <% if (validationErrors.find(e => e.path.includes('klient'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('klient')).message %>
+                    <% } %> 
+                </span>
+
+                <label for="auto"><%= __('Wypozyczenie.fields.auto') %>: <span class="symbol-required">*</span></label>
+                <select name="auto" id="auto" class="<%= (formMode == 'showDetails') ? 'label-inactive' : validationErrors.find(e => e.path.includes('auto_Id')) ? 'error-input' : 'label-active' %>" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+                    <option value="" selected>-- Wybierz auto --</option>
+                    <% for (let i=0; i<allAutos.length; i++) { let aa = allAutos[i]; %>
+                        <option value="<%= aa._id %>" label="<%= aa.producent + ' ' + aa.model %>" 
+                        <%= (sel && aa._id.toString() == wypozyczenie.auto_Id.toString()) ? 'selected' : ''%>><%= aa.producent + ' ' + aa.model %></option>
+                    <% } %>
+                </select>
+                <span id="errorAuto" class="errors-text">
+                    <% if (validationErrors.find(e => e.path.includes('auto'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('auto')).message %>
+                    <% } %> 
+                </span>
+
+                <label for="data_wypozyczenia"><%= __('Wypozyczenie.fields.data_wypozyczenia') %>: <span class="symbol-required">*</span></label>
+                <input type="date" name="data_wypozyczenia" id="data_wypozyczenia" class="<%= (formMode == 'showDetails') ? 'label-inactive' : validationErrors.find(e => e.path.includes('data_wypozyczenia')) ? 'error-input' : '' %>" placeholder="YYYY-MM-DD" required
+                value="<%= wypozyczenie.data_wypozyczenia ? ((formMode != 'createNew') ? fmt.formatDate(wypozyczenie.data_wypozyczenia) : wypozyczenie.data_wypozyczenia) : "" %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorData_wypozyczenia" class="errors-text">
+                    <% if (validationErrors.find(e => e.path.includes('data_wypozyczenia'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('data_wypozyczenia')).message %>
+                    <% } %> 
+                </span>
+
+                <label for="data_zwrotu"><%= __('Wypozyczenie.fields.data_zwrotu') %>: </label>
+                <input type="date" name="data_zwrotu" id="data_zwrotu" class="<%= (formMode == 'showDetails') ? 'label-inactive' : validationErrors.find(e => e.path.includes('data_zwrotu')) ? 'error-input' : '' %>" placeholder="YYYY-MM-DD"
+                value="<%= wypozyczenie.data_zwrotu ? ((formMode != 'createNew') ? fmt.formatDate(wypozyczenie.data_zwrotu) : wypozyczenie.data_zwrotu) : "" %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorData_zwrotu" class="errors-text">
+                    <% if (validationErrors.find(e => e.path.includes('data_zwrotu'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('data_zwrotu')).message %>
+                    <% } %> 
+                </span>
+
+                <input type="hidden" name="_id" value="<%= wypozyczenie._id %>"> 
+
+                <% if (formMode == 'showDetails') { %>
+                    <div class="form-buttons">
+                        <a href="/Wypozyczenie/edit/<%= wypozyczenie._id %>" class="form-button-edit">><%= __('form.actions.edit') %></a>
+                        <a class="form-button-cancel" href="/Wypozyczenie"><%= __('form.actions.return') %></a>
+                    </div>
+                <% } else { %>  
+                
+                    <div class="form-buttons">
+                        <p id="errorSummary" class="errors-text"></p>
+                        <input class="form-button-submit"  type="submit" value="<%=btnLabel%>" />
+                        <a class="form-button-cancel" href="/Wypozyczenie"><%= __('form.actions.cancel') %></a>
+                    </div> 
+                <% } %> 
+
+                <div style="display: none">
+                    <span id="errorMessage-obligator"><%= __('comunicates.obligator') %></span>
+                    <span id="errorMessage-date"><%= __('comunicates.date') %></span>
+                    <span id="errorMessage-date_past"><%= __('comunicates.date_past') %></span>
+                    <span id="errorMessage-date_after"><%= __('comunicates.date_after') %></span>
+                </div>
+                
+            </form>
+        </main>
+        <%- include('../fragments/footer.ejs') %>
+<% } %>        

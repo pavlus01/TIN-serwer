@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang ="pl_PL">
+    <head>        
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+        <link rel="stylesheet" href="/css/style.css" />
+        <meta charset="UTF-8">
+        <script type="application/javascript" src="/js/validationCommon.js"></script>
+        <title>SpeedTrip DEMO</title>
+    </head>
+    <body>
+        <header>
+            <h1>SpeedTrip</h1>
+            <img src="/images/logo.png" alt="SpeedTrip Logo">
+        </header>
+        <nav>
+            <ol>
+                <% if(loggedUser) { %>
+                    <li><a href="/Logowanie" class="<%= navLocation == 'logowanie' ? 'active' : ''%>"><%= __('nav.uzytkownik') %></a></li>
+                    <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>"><%= __('nav.main') %></a></li>
+                    <li><a href="/Auto" class="<%= navLocation == 'auto' ? 'active' : ''%>"><%= __('nav.auto') %></a></li>
+                    <li><a href="/Klient" class="<%= navLocation == 'klient' ? 'active' : ''%>"><%= __('nav.klient') %></a></li>
+                    <li><a href="/Wypozyczenie" class="<%= navLocation == 'wypozyczenie' ? 'active' : ''%>"><%= __('nav.wypozyczenie') %></a></li>
+                <% } else { %>
+                    <li><a href="/Logowanie" class="<%= navLocation == 'logowanie' ? 'active' : ''%>"><%= __('nav.logowanie') %></a></li>
+                <% } %>
+                <ul>
+                    <li><a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : ''%>">PL</a></li>
+                    <li><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : ''%>">EN</a></li>
+                </ul>
+            </ol>
+        </nav>

@@ -1,0 +1,23 @@
+<%- include('./fragments/header.ejs') %>
+<main>
+<% if(!loggedUser) { %>
+    <div id="login">
+        <h2><%= __('logowanie.title') %></h2>
+        <form method="post" action="/login" novalidate>
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" name="email">
+
+            <label for="loginPassword"><%= __('logowanie.password') %>:</label>
+            <input type="password" id="loginPassword" name="password">
+
+            <input type="submit" value="<%= __('logowanie.button_login') %>">
+            <a href="/"><%= __('form.actions.cancel') %></a>
+            <span id="loginErrors" class="errors-text"><%= loginError ? loginError : ''%></span>
+        </form>
+    </div>
+<% } else { %>
+    <span><%= __('logowanie.text') %> <%= loggedUser.imie + " " + loggedUser.nazwisko%></span>
+    <button><a href="/logout" class="form-button-cancel"><%= __('logowanie.button_logout') %></a></button>
+<% }%> 
+<%- include('./fragments/footer.ejs') %>
+</main>

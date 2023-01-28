@@ -1,0 +1,32 @@
+
+        <script type="application/javascript" src="/js/validationKlientForm.js"></script>
+
+<%- include('../fragments/header.ejs') %>
+        <main>
+            <h2>Nowy klient</h2>
+
+            <form class="form" novalidate onsubmit="return validateForm();">
+                <label for="imie">Imię: <span class="symbol-required">*</span></label>
+                <input type="text" name="imie" id="imie" class="error-input" placeholder="3-35 znaków" required />
+                <span id="errorImie" class="errors-text">Pole jest wymagane</span>
+
+                <label for="nazwisko">Nazwisko: <span class="symbol-required">*</span></label>
+                <input type="text" name="nazwisko" id="nazwisko" class="error-input" placeholder="2-45 znaków" required />
+                <span id="errorNazwisko" class="errors-text">Pole jest wymagane</span>
+
+                <label for="email">Email: <span class="symbol-required">*</span></label>
+                <input type="email" name="email" id="email" class="error-input" placeholder="np. nazwa@domena.pl" required />
+                <span id="errorEmail" class="errors-text">Pole jest wymagane</span>
+
+                <label for="data_urodzenia">Data urodzenia: <span class="symbol-required">*</span></label>
+                <input type="date" name="data_urodzenia" id="data_urodzenia" class="error-input" placeholder="YYYY-MM-DD" required />
+                <span id="errorData_urodzenia" class="errors-text">Pole jest wymagane</span>
+
+                <div class="form-buttons">
+                    <p id="errorSummary" class="errors-text">Formularz zawiera błędy</p>
+                    <input type="submit" class="form-button-submit" value="Dodaj" />
+                    <a href="/Klient/" class="form-button-cancel"><i>Anuluj</i></a>
+                </div>
+            </form>            
+        </main>
+        <%- include('../fragments/footer.ejs') %>

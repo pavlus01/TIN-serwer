@@ -1,0 +1,36 @@
+
+       <script type="application/javascript" src="/js/validationAutoForm.js"></script>
+
+<%- include('../fragments/header.ejs') %>
+        <main>
+            <h2>Nowy samochód</h2>
+
+            <form class="form" novalidate onsubmit="return validateForm();">
+                <label for="producent">Producent: <span class="symbol-required">*</span></label>
+                <input type="text" name="producent" id="producent" class="error-input" placeholder="3-25 znaków" required />
+                <span id="errorProducent" class="errors-text">Pole jest wymagane</span>
+
+                <label for="model">Model: <span class="symbol-required">*</span></label>
+                <input type="text" name="model" id="model" class="error-input" placeholder="2-20 znaków" required />
+                <span id="errorModel" class="errors-text">Pole jest wymagane</span>
+
+                <label for="rok_produkcji">Rok produkcji: <span class="symbol-required">*</span></label>
+                <input type="number" name="rok_produkcji" id="rok_produkcji" class="error-input" placeholder="liczba max 4 cyfry" required />
+                <span id="errorRok_produkcji" class="errors-text">Pole jest wymagane</span>
+
+                <label for="kolor">Kolor: <span class="symbol-required">*</span></label>
+                <input type="text" name="kolor" id="kolor" class="error-input" placeholder="3-25 znaków" required />
+                <span id="errorKolor" class="errors-text">Pole jest wymagane</span>
+
+                <label for="moc_silnika" >Moc silnika: <span class="symbol-required">*</span></label>
+                <input type="number" name="moc_silnika" id="moc_silnika" class="error-input" placeholder="liczba max 4 cyfry" required />
+                <span id="errorMoc_silnika" class="errors-text">Pole jest wymagane</span>
+
+                <div class="form-buttons">
+                    <p id="errorSummary" class="errors-text">Formularz zawiera błędy</p>
+                    <input type="submit" class="form-button-submit" value="Dodaj" />
+                    <a href="/Auto/" class="form-button-cancel"><i>Anuluj</i></a>
+                </div>
+            </form>
+        </main>
+        <%- include('../fragments/footer.ejs') %>

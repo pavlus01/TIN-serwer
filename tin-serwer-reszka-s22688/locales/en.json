@@ -1,0 +1,156 @@
+{
+	"main-page": {
+		"content": "Main Page"
+	},
+	"nav": {
+		"logowanie": "Log in",
+		"uzytkownik": "User data",
+		"main": "Main Page",
+		"auto": "Cars",
+		"klient": "Clients",
+		"wypozyczenie": "Rents"
+	},
+	"logowanie": {
+		"title": "Logging",
+		"password": "Password",
+		"text": "You are logged as:",
+		"button_logout": "Log out",
+		"button_login": "Log in"
+	},
+	"list": {
+		"actions": {
+			"title": "Actions",
+			"details": "Details",
+			"edit": "Edit",
+			"delete": "Delete"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Return",
+			"edit": "Edit",
+			"cancel": "Cancel"
+		},
+		"cancel": "form.cancel"
+	},
+	"Auto": {
+		"fields": {
+			"producent": "Producer",
+			"model": "Model",
+			"rok_produkcji": "Year of production",
+			"kolor": "Color",
+			"moc_silnika": "Engine power"
+		},
+		"list": {
+			"title": "Car",
+			"addNew": "Add new car",
+			"noData": "No cars in database",
+			"pageTitle": "Car list"
+		},
+		"form": {
+			"wypozyczenia": "Rent history",
+			"add": {
+				"pageTitle": "Adding new car",
+				"btnLabel": "Add car",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new car has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edit car",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The car has been successfully edited"
+				}
+			},
+			"details": "Car details"
+		}
+	},
+	"Klient": {
+		"fields": {
+			"imie": "First name",
+			"nazwisko": "Second name",
+			"email": "Email",
+			"data_urodzenia": "Birth date",
+			"password": "Password"
+		},
+		"list": {
+			"title": "Client",
+			"addNew": "Adding new client",
+			"noData": "No clients in datebase",
+			"pageTitle": "Client list"
+		},
+		"form": {
+			"wypozyczenia": "Rent history",
+			"add": {
+				"pageTitle": "Adding new clients",
+				"btnLabel": "Add new client",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new client has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edit client",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The client has been successfully edited"
+				}
+			},
+			"details": "Client details"
+		}
+	},
+	"Wypozyczenie": {
+		"fields": {
+			"klient": "Client",
+			"auto": "Car",
+			"data_wypozyczenia": "Rent date",
+			"data_zwrotu": "Return date"
+		},
+		"list": {
+			"title": "Rents",
+			"addNew": "Add new rent",
+			"noData": "No rents in datebase",
+			"pageTitle": "Rent list"
+		},
+		"form": {
+			"wypozyczenia": "Rent history",
+			"add": {
+				"pageTitle": "Addnig new rent",
+				"btnLabel": "Add rent",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new rent has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Reny edit",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The rent has been successfully edited"
+				}
+			},
+			"details": "Rent details"
+		}
+	},
+	"comunicates": {
+		"obligator": "Field is obligator",
+		"chara2-20": "Field should have from 2 to 20 characters",
+		"whole": "Field should be whole number",
+		"1800+": "Field should be from 1800 to actual year",
+		"chara3-25": "Field should have from 2 to 25 characters",
+		"100-999": "Field should be from 100 to 999",
+		"chara2-45":"Field should have from 2 to 45 characters",
+		"chara5-60": "Field should have from 5 to 60 characters",
+		"mail": "Field should have correct email address",
+		"date": "Field should be in form yyyy-MM-dd (like 2000-01-01)",
+		"date_past": "Date should be from the past",
+		"18": "Client should be an adult",
+		"chara7-20": "Field should have from 7 to 20 characters",
+		"date_after": "Date should be after rent date"
+	}
+}

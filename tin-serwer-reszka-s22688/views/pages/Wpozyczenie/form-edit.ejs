@@ -1,0 +1,42 @@
+
+        <script type="application/javascript" src="/js/validationWypozyczenieForm.js"></script>
+
+<%- include('../fragments/header.ejs') %>
+        <main>
+            <h2>Edytuj wypożyczenie</h2>
+            
+            <form class="form" novalidate onsubmit="return validateForm();">
+                <label for="klient">Klient: <span class="symbol-required">*</span></label>
+                <select name="klient" id="klient" class="label-active" required>
+                    <option value="">-- Wybierz klienta --</option>
+                    <option value="1">Jan Kowalski</option>
+                    <option value="2">Łukasz Adamski</option>
+                    <option value="3" selected>Krzysztof Protasiewicz</option>
+                </select>
+                <span id="errorKlient" class="errors-text"></span>
+
+                <label for="auto">Auto: <span class="symbol-required">*</span></label>
+                <select name="auto" id="auto" class="label-active" required>
+                    <option value="">-- Wybierz auto --</option>
+                    <option value="1" selected>Aston Martin DB11</option>
+                    <option value="2">BMW i8</option>
+                    <option value="3">Skoda Superb</option>
+                </select>
+                <span id="errorAuto" class="errors-text"></span>
+
+                <label for="data_wypozyczenia">Data wypożyczenia: <span class="symbol-required">*</span></label>
+                <input type="date" name="data_wypozyczenia" id="data_wypozyczenia" value="2022-10-09" placeholder="YYYY-MM-DD" required />
+                <span id="errorData_wypozyczenia" class="errors-text"></span>
+
+                <label for="data_zwrotu">Data zwrotu: </label>
+                <input type="date" name="data_zwrotu" id="data_zwrotu" value="2022-10-11" placeholder="YYYY-MM-DD"/>
+                <span id="errorData_zwrotu" class="errors-text"></span>
+
+                <div class="form-buttons">
+                    <p id="errorSummary"></p>
+                    <input type="submit" class="form-button-submit" value="Dodaj" />
+                    <a href="/Wypozyczenie/" class="form-button-cancel"><i>Anuluj</i></a>
+                </div>
+            </form>
+        </main>
+        <%- include('../fragments/footer.ejs') %>

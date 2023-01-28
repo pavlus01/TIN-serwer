@@ -1,0 +1,112 @@
+<% if (!loggedUser) { %>
+    <%- include('../logowanie.ejs') %>
+<% } else { %> 
+
+<%- include('../fragments/header.ejs') %>
+        <main>
+            <script type="application/javascript" src="/js/validationAutoForm.js"></script>
+            <h2><%= pageTitle %></h2>
+
+<form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+                <label for="producent"><%= __('Auto.fields.producent') %>: <span class="symbol-required">*</span></label>
+                <input type="text" name="producent" id="producent" placeholder="3-25" class="<%= (formMode == 'showDetails') ? 'label-inactive' : validationErrors.find(e => e.path.includes('producent')) ? 'error-input' : '' %>" required
+                value="<%= auto.producent %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorProducent" class="errors-text">
+                    <% if (validationErrors.find(e => e.path.includes('producent'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('producent')).message %>
+                    <% } %>    
+                </span>
+
+                <label for="model"><%= __('Auto.fields.model') %>: <span class="symbol-required">*</span></label>
+                <input type="text" name="model" id="model" placeholder="2-20" class="<%= (formMode == 'showDetails') ? 'label-inactive' : validationErrors.find(e => e.path.includes('model')) ? 'error-input' : '' %>" required 
+                value="<%= auto.model %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorModel" class="errors-text">
+                    <% if (validationErrors.find(e => e.path.includes('model'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('model')).message %>
+                    <% } %>  
+                </span>
+
+                <label for="rok_produkcji"><%= __('Auto.fields.rok_produkcji') %>: <span class="symbol-required">*</span></label>
+                <input type="number" name="rok_produkcji" id="rok_produkcji" placeholder="1800+" class="<%= (formMode == 'showDetails') ? 'label-inactive' : validationErrors.find(e => e.path.includes('rok_produkcji')) ? 'error-input' : '' %>" required 
+                value="<%= auto.rok_produkcji %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorRok_produkcji" class="errors-text">
+                    <% if (validationErrors.find(e => e.path.includes('rok_produkcji'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('rok_produkcji')).message %>
+                    <% } %> 
+                </span>
+
+                <label for="kolor"><%= __('Auto.fields.kolor') %>: <span class="symbol-required">*</span></label>
+                <input type="text" name="kolor" id="kolor" placeholder="3-25" class="<%= (formMode == 'showDetails') ? 'label-inactive' : validationErrors.find(e => e.path.includes('kolor')) ? 'error-input' : '' %>" required 
+                value="<%= auto.kolor %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorKolor" class="errors-text">
+                    <% if (validationErrors.find(e => e.path.includes('kolor'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('kolor')).message %>
+                    <% } %>  
+                </span>
+
+                <label for="moc_silnika"><%= __('Auto.fields.moc_silnika') %>: <span class="symbol-required">*</span></label>
+                <input type="number" name="moc_silnika" id="moc_silnika" placeholder="100-999" class="<%= (formMode == 'showDetails') ? 'label-inactive' : validationErrors.find(e => e.path.includes('moc_silnika')) ? 'error-input' : '' %>" required 
+                value="<%= auto.moc_silnika %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorMoc_silnika" class="errors-text">
+                    <% if (validationErrors.find(e => e.path.includes('moc_silnika'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('moc_silnika')).message %>
+                    <% } %>  
+                </span>
+
+                <input type="hidden" name="_id" value="<%= auto._id %>"> 
+
+                
+                    <% if (formMode == 'showDetails') { %>
+                        <div class="form-buttons">
+                            <a href="/auto/edit/<%= auto._id %>" class="form-button-edit"><%= __('form.actions.edit') %></a>
+                            <a class="form-button-cancel" href="/Auto"><%= __('form.actions.return') %></a>
+                        </div>
+                    <% } else { %>  
+                    
+                        <div class="form-buttons">
+                            <p id="errorSummary" class="errors-text"></p>
+                            <input class="form-button-submit"  type="submit" value="<%=btnLabel%>" />
+                            <a class="form-button-cancel" href="/Auto"><%= __('form.actions.cancel') %></a>
+                        </div> 
+                    <% } %>   
+                    
+                    <div style="display: none">
+                        <span id="errorMessage-obligator"><%= __('comunicates.obligator') %></span>
+                        <span id="errorMessage-chara2-20"><%= __('comunicates.chara2-20') %></span>
+                        <span id="errorMessage-whole"><%= __('comunicates.whole') %></span>
+                        <span id="errorMessage-1800+"><%= __('comunicates.1800+') %></span>
+                        <span id="errorMessage-chara3-25"><%= __('comunicates.chara3-25') %></span>
+                        <span id="errorMessage-100-999"><%= __('comunicates.100-999') %></span>
+                     </div>
+                     
+                  
+            </form>
+
+
+            <% if (formMode == 'showDetails') { %>
+                <h2><%= __('Klient.form.wypozyczenia') %></h2>
+
+                <table class="table-list" id="details-table">
+                    <thead>
+                        <tr>
+                            <th class="table-list-tr"><%= __('Klient.fields.imie') %></th>
+                            <th class="table-list-tr"><%= __('Klient.fields.nazwisko') %></th>
+                            <th class="table-list-tr"><%= __('Wypozyczenie.fields.data_wypozyczenia') %></th>
+                            <th class="table-list-tr"><%= __('Wypozyczenie.fields.data_zwrotu') %></th>
+                        </tr>    
+                    </thead>
+                    <tbody>
+                        <% for (let a of auto.wypozyczenia) { %>
+                        <tr>
+                            <td><a href="/klient/details/<%= a.klient._id %>"><%= a.klient.imie %></a></td>
+                            <td><a href="/klient/details/<%= a.klient._id %>"><%= a.klient.nazwisko %></td>
+                            <td><%= a.data_wypozyczenia.toISOString().split('T')[0] %></td>
+                            <td><%= a.data_zwrotu ? a.data_zwrotu.toISOString().split('T')[0] : '' %></td>
+                        </tr>
+                        <% } %>
+                    </tbody>    
+                </table>
+                <% } %>
+        </main>
+        <%- include('../fragments/footer.ejs') %>
+<% } %>            

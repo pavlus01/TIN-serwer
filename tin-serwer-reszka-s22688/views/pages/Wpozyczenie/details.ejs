@@ -1,0 +1,43 @@
+
+        <script type="application/javascript" src="/js/validationWypozyczenieForm.js"></script>
+
+<%- include('../fragments/header.ejs') %>
+        <main>
+            <h2>Szczegóły wypożyczenia</h2>
+
+            <form class="form">
+                <label for="klient">Klient: <span class="symbol-required">*</span></label>
+                <select name="klient" id="klient" class="label-inactive" disabled>
+                    <option value="">-- Wybierz klienta --</option>
+                    <option value="1">Jan Kowalski</option>
+                    <option value="2">Łukasz Adamski</option>
+                    <option value="3" selected>Krzysztof Protasiewicz</option>
+                </select>
+                <span id="errorKlient"></span>
+
+                <label for="auto">Auto: <span class="symbol-required">*</span></label>
+                <select name="auto" id="auto" class="label-inactive" disabled>
+                    <option value="">-- Wybierz auto --</option>
+                    <option value="1" selected>Aston Martin DB11</option>
+                    <option value="2">BMW i8</option>
+                    <option value="3">Skoda Superb</option>
+                </select>
+                <span id="errorAuto"></span>
+
+                <label for="data_wypozyczenia">Data wypożyczenia: <span class="symbol-required">*</span></label>
+                <input type="date" name="data_wypozyczenia" id="data_wypozyczenia" class="label-inactive" value="2022-10-09" disabled />
+                <span id="errorData_wypozyczenia"></span>
+
+                <label for="data_zwrotu">Data zwrotu: </label>
+                <input type="date" name="data_zwrotu" id="data_zwrotu" class="label-inactive" value="2022-10-11" disabled/>
+                <span id="errorData_zwrotu"></span>
+
+                <div class="form-buttons">
+                    <p id="errorSummary"></p>
+                    <a href="/Wypozyczenie/edit/1" class="form-button-edit"><i>Edytuj</i></a>
+                    <a href="/Wypozyczenie/" class="form-button-cancel"><i>Powrót</i></a>
+                </div>
+            </form>
+
+        </main>
+        <%- include('../fragments/footer.ejs') %>

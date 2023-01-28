@@ -1,0 +1,52 @@
+<% if (!loggedUser) { %>
+    <%- include('../logowanie.ejs') %>
+<% } else { %>    
+    <script type="application/javascript" src="/js/validationKlientForm.js"></script>
+
+<%- include('../fragments/header.ejs') %>
+        <main>
+            <h2><%= __('Klient.list.pageTitle') %></h2>
+
+            <% if (klients.length != 0) { %>
+
+            <table class="table-list" id="client-table">
+                <thead>
+                    <tr>
+                        <th class="table-list-tr"><%= __('Klient.fields.imie') %></th>
+                        <th class="table-list-tr"><%= __('Klient.fields.nazwisko') %></th>
+                        <th class="table-list-tr"><%= __('Klient.fields.email') %></th>
+                        <th class="table-list-tr"><%= __('Klient.fields.data_urodzenia') %></th>
+                        <th class="table-list-tr"><%= __('list.actions.title') %></th>
+                    </tr>    
+                </thead>
+                <tbody>
+                    <% for (let klient of klients) { %>
+                    <tr>
+                        <td><%= klient.imie %></td>
+                        <td><%= klient.nazwisko %></td>
+                        <td><%= klient.email %></td>
+                        <td><%= klient.data_urodzenia.toISOString().split('T')[0] %></td>
+                        <td>
+                            <ol type="a" class="list-actions">
+                                <li>
+                                    <b><a href="/Klient/details/<%=klient._id%>" class="list-actions-button-details"><span class="small-window"><%= __('list.actions.details') %></span></a></b>
+                                </li>
+                                <li>
+                                    <b><a href="/Klient/edit/<%=klient._id%>" class="list-actions-button-edit"><span class="small-window"><%= __('list.actions.edit') %></span></a></b>
+                                </li>
+                                <li>
+                                    <b><a href="/Klient/delete/<%=klient._id%>" class="list-actions-button-delete"><span class="small-window"><%= __('list.actions.delete') %></span></a></b>
+                                </li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>    
+            </table>
+            <% } else { %>
+                <p><i><%= __('Klient.list.noData') %></i></p>
+            <% } %> 
+            <p><a href="/Klient/add" class="add-button"><i><%= __('Klient.list.addNew') %></i></a></p>
+        </main>
+        <%- include('../fragments/footer.ejs') %>
+<% } %>          

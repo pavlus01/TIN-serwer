@@ -1,0 +1,156 @@
+{
+	"main-page": {
+		"content": "Strona główna"
+	},
+	"nav": {
+		"logowanie": "Logowanie",
+		"uzytkownik": "Użytkownik",
+		"main": "Strona główna",
+		"auto": "Samochody",
+		"klient": "Klienci",
+		"wypozyczenie": "Wypożyczenia"
+	},
+	"logowanie": {
+		"title": "Logowanie",
+		"password": "Hasło",
+		"text": "Jesteś zalogowany jako:",
+		"button_logout": "Wyloguj się",
+		"button_login": "Zaloguj"
+	},
+	"list": {
+		"actions": {
+			"title": "Akcje",
+			"details": "Szczegóły",
+			"edit": "Edytuj",
+			"delete": "Usuń"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Powrót",
+			"edit": "Edytuj",
+			"cancel": "Anuluj"
+		},
+		"cancel": "form.cancel"
+	},
+	"Auto": {
+		"fields": {
+			"producent": "Producent",
+			"model": "Model",
+			"rok_produkcji": "Rok produkcji",
+			"kolor": "Kolor",
+			"moc_silnika": "Moc silnika"
+		},
+		"list": {
+			"title": "Auta",
+			"addNew": "Dodaj nowy pojazd",
+			"noData": "Brak pojazdów w bazie",
+			"pageTitle": "Lista pojazdów"
+		},
+		"form": {
+			"wypozyczenia": "Historia wypożyczeń",
+			"add": {
+				"pageTitle": "Dodawanie pojazdów",
+				"btnLabel": "Dodaj pojazd",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano pojazd"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja auta",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano pojazd"
+				}
+			},
+			"details": "Szczegóły pojazdu"
+		}
+	},
+	"Klient": {
+		"fields": {
+			"imie": "Imię",
+			"nazwisko": "Nazwisko",
+			"email": "Email",
+			"data_urodzenia": "Data urodzenia",
+			"password": "Hasło"
+		},
+		"list": {
+			"title": "Klient",
+			"addNew": "Dodaj nowego klienta",
+			"noData": "Brak klientów w bazie",
+			"pageTitle": "Lista klientów"
+		},
+		"form": {
+			"wypozyczenia": "Historia wypożyczenia",
+			"add": {
+				"pageTitle": "Dodawanie klienta",
+				"btnLabel": "Dodaj klienta",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano pojazd"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja klienta",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano pojazd"
+				}
+			},
+			"details": "Szczegóły klienta"
+		}
+	},
+	"Wypozyczenie": {
+		"fields": {
+			"klient": "Klient",
+			"auto": "Auto",
+			"data_wypozyczenia": "Data wpożyczenia",
+			"data_zwrotu": "Data zwrotu"
+		},
+		"list": {
+			"title": "Wypożyczenia",
+			"addNew": "Dodaj nowe wypożyczenie",
+			"noData": "Brak wypożyczeń w bazie",
+			"pageTitle": "Lista wypożyczeń"
+		},
+		"form": {
+			"wypozyczenia": "Historia wypożyczenia",
+			"add": {
+				"pageTitle": "Dodawanie wypożyczenia",
+				"btnLabel": "Dodaj wypożyczenie",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano pojazd"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja wypożyczenia",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano wypożyczenie"
+				}
+			},
+			"details": "Szczegóły wypożyczenia"
+		}
+	},
+	"comunicates": {
+		"obligator": "Pole jest wymagane",
+		"chara2-20": "Pole powinno zawierać od 2 do 20 znaków",
+		"whole": "Pole powinno być liczbą całkowitą",
+		"1800+": "Pole powinno być w zakresie od 1800 do aktualnego roku",
+		"chara3-25": "Pole powinno zawierać od 3 do 25 znaków",
+		"100-999": "Pole powinno być w zakresie od 100 do 999",
+		"chara2-45": "Pole powinno zawierać od 2 do 45 znaków",
+		"chara5-60": "Pole powinno zawierać od 5 do 60 znaków",
+		"mail": "Pole powinno zawierać prawidłowy adres email",
+		"date": "Pole powinno zawierać datę w formacie yyyy-MM-dd (np. 2000-01-01)",
+		"date_past": "Data powinna być z przeszłości",
+		"18": "Klient musi mieć przynajmniej 18 lat",
+		"chara7-20": "Pole powinno zawierać od 7 do 20 znaków",
+		"date_after": "Data powinna być po dacie wypożyczenia"
+	}
+}

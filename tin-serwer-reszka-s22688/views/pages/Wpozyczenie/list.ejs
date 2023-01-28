@@ -1,0 +1,52 @@
+<% if (!loggedUser) { %>
+    <%- include('../logowanie.ejs') %>
+<% } else { %>   
+        <script type="application/javascript" src="/js/validationWypozyczenieForm.js"></script>
+
+<%- include('../fragments/header.ejs') %>
+        <main>
+            <h2><%= __('Wypozyczenie.list.pageTitle') %></h2>
+
+            <% if (wypozyczenies.length != 0) { %>
+
+            <table class="table-list" id="wypozyczenie-table">
+                <thead>
+                    <tr>
+                        <th class="table-list-tr"><%= __('Wypozyczenie.fields.klient') %></th>
+                        <th class="table-list-tr"><%= __('Wypozyczenie.fields.auto') %></th>
+                        <th class="table-list-tr"><%= __('Wypozyczenie.fields.data_wypozyczenia') %></th>
+                        <th class="table-list-tr"><%= __('Wypozyczenie.fields.data_zwrotu') %></th>
+                        <th class="table-list-tr"><%= __('list.actions.title') %></th>
+                    </tr>    
+                </thead>
+                <tbody>
+                    <% for (let wypozyczenie of wypozyczenies) { %>
+                    <tr>
+                        <td><%= wypozyczenie.klient.imie %></td>
+                        <td><%= wypozyczenie.klient.nazwisko %></td>
+                        <td><%= wypozyczenie.auto.producent %></td>
+                        <td><%= wypozyczenie.data_wypozyczenia.toISOString().split('T')[0] %></td>
+                        <td>
+                            <ol type="a" class="list-actions">
+                                <li>
+                                    <b><a href="/Wypozyczenie/details/<%=wypozyczenie._id%>" class="list-actions-button-details"><span class="small-window"><%= __('list.actions.details') %></span></a></b>
+                                </li>
+                                <li>
+                                    <b><a href="/Wypozyczenie/edit/<%=wypozyczenie._id%>" class="list-actions-button-edit"><span class="small-window"><%= __('list.actions.edit') %></span></a></b>
+                                </li>
+                                <li>
+                                    <b><a href="/Wypozyczenie/delete/<%=wypozyczenie._id%>" class="list-actions-button-delete"><span class="small-window"><%= __('list.actions.delete') %></span></a></b>
+                                </li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>    
+            </table>
+            <% } else { %>
+                <p><i><%= __('Wypozyczenie.list.noData') %></i></p>
+            <% } %> 
+            <p><a href="/Wypozyczenie/add" class="add-button"><i><%= __('Wypozyczenie.list.addNew') %></i></a></p>
+        </main>
+        <%- include('../fragments/footer.ejs') %>
+<% } %>        

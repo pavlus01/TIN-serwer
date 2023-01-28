@@ -1,0 +1,54 @@
+<% if (!loggedUser) { %>
+    <%- include('../logowanie.ejs') %>
+<% } else { %>    
+    <script type="application/javascript" src="/js/validationAutoForm.js"></script>
+
+<%- include('../fragments/header.ejs') %>
+        <main>
+            <h2><%= __('Auto.list.pageTitle') %></h2>
+
+        <% if (autos.length != 0) { %>
+            
+            <table class="table-list" id="auta-table">
+                <thead>
+                    <tr>
+                        <th class="table-list-tr"><%= __('Auto.fields.producent') %></th>
+                        <th class="table-list-tr"><%= __('Auto.fields.model') %></th>
+                        <th class="table-list-tr"><%= __('Auto.fields.rok_produkcji') %></th>
+                        <th class="table-list-tr"><%= __('Auto.fields.kolor') %></th>
+                        <th class="table-list-tr"><%= __('Auto.fields.moc_silnika') %></th>
+                        <th class="table-list-tr"><%= __('list.actions.title') %></th>
+                    </tr>    
+                </thead>
+                <tbody>
+                    <% for (let auto of autos) { %>
+                    <tr>
+                        <td><%= auto.producent %></td>
+                        <td><%= auto.model %></td>
+                        <td><%= auto.rok_produkcji %></td>
+                        <td><%= auto.kolor %></td>
+                        <td><%= auto.moc_silnika %></td>
+                        <td> 
+                            <ol type="a" class="list-actions">
+                                <li>
+                                    <b><a href="/Auto/details/<%=auto._id%>" class="list-actions-button-details"><span class="small-window"><%= __('list.actions.details') %></span></a></b>
+                                </li>
+                                <li>
+                                    <b><a href="/Auto/edit/<%=auto._id%>" class="list-actions-button-edit"><span class="small-window"><%= __('list.actions.edit') %></span></a></b>
+                                </li>
+                                <li>
+                                    <b><a href="/Auto/delete/<%=auto._id%>" class="list-actions-button-delete"><span class="small-window"><%= __('list.actions.delete') %></span></a></b>
+                                </li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>    
+            </table>
+        <% } else { %>
+            <p><i><%= __('Auto.list.noData') %></i></p>
+        <% } %>    
+            <p><a href="/Auto/add" class="add-button"><i><%= __('Auto.list.addNew') %></i></a></p>
+        </main>
+        <%- include('../fragments/footer.ejs') %>
+<% } %>           

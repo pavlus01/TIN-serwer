@@ -1,0 +1,65 @@
+
+        <script type="application/javascript" src="/js/validationKlientForm.js"></script>
+
+<%- include('../fragments/header.ejs') %>
+        <main>
+            <h2>Szczegóły klienta</h2>
+
+            <form class="form">
+                <label for="imie">Imię: <span class="symbol-required">*</span></label>
+                <input type="text" name="imie" id="imie" value="Jan" class="label-inactive" disabled />
+                <span id="errorImie" class="errors-text"></span>
+
+                <label for="nazwisko">Nazwisko: <span class="symbol-required">*</span></label>
+                <input type="text" name="nazwisko" id="nazwisko" value="Kowalski" class="label-inactive" disabled />
+                <span id="errorNazwisko" class="errors-text"></span>
+
+                <label for="email">Email: <span class="symbol-required">*</span></label>
+                <input type="email" name="email" id="email" value="jan.kowalski@gmail.com" class="label-inactive" disabled />
+                <span id="errorEmail" class="errors-text"></span>
+
+                <label for="data_urodzenia">Data urodzenia: <span class="symbol-required">*</span></label>
+                <input type="date" name="data_urodzenia" id="data_urodzenia" value="1978-06-27" class="label-inactive" disabled />
+                <span id="errorData_urodzenia" class="errors-text"></span>
+
+                <div class="form-buttons">
+                    <a href="/Klient/edit/1" class="form-button-submit"><i>Edytuj</i></a>
+                </div>
+            </form>
+
+            <h2>Wypożyczenia</h2>
+
+            <table class="table-list" id="details-table">
+                <thead>
+                    <tr>
+                        <th class="table-list-tr">Marka auta</th>
+                        <th class="table-list-tr">Model auta</th>
+                        <th class="table-list-tr">Data wypożyczenia</th>
+                        <th class="table-list-tr">Data zwrotu</th>
+                    </tr>    
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aston Martin</td>
+                        <td>DB11</td>
+                        <td>2022-10-12</td>
+                        <td>2022-10-29</td>
+                    </tr>
+                    <tr>
+                        <td>Skoda</td>
+                        <td>Superb</td>
+                        <td>2022-02-11</td>
+                        <td>2022-02-27</td>
+                    </tr>
+                    <tr>
+                        <td>BMW</td>
+                        <td>i8</td>
+                        <td>2022-05-09</td>
+                        <td>2022-06-10</td>
+                    </tr>
+                </tbody>    
+            </table>
+
+            <p><a href="/Klient/" class="button-goback"><i>Powrót</i></a></p>
+        </main>
+        <%- include('../fragments/footer.ejs') %>
